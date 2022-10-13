@@ -1,39 +1,42 @@
-namespace Menu
+namespace Menu.Editor
 {
-#if UNITY_EDITOR
-
+    
     using UnityEditor;
     using UnityEngine;
 
+#if UNITY_EDITOR
     [CustomEditor(typeof(MenuManager))]
-    public class MenuManagerEditor : Editor
+    public class MenuManagerEditor : UnityEditor.Editor
     {
         private MenuManager menuManagerScript;
 
-        private void OnEnable () 
+        private void OnEnable()
         {
             menuManagerScript = (MenuManager)target;
         }
-        
+
         public override void OnInspectorGUI()
         {
+            serializedObject.Update();
+
             DrawDefaultInspector();
-            
+
             //buttons
             if (GUILayout.Button("Set Menu Type Simple"))
             {
                 menuManagerScript.SetMenuTypeSimple();
             }
+
             if (GUILayout.Button("Set Menu Type Side Slide"))
             {
                 menuManagerScript.SetMenuTypeSideSlide();
             }
-            
+
             #region Warnings
 
             //references check
-            MenuReferences simpleMenuReferences = menuManagerScript._simpleMenuReferences;
-            MenuReferences sideSlideMenuReferences = menuManagerScript._sideSlideMenuReferences;
+            MenuReferences simpleMenuReferences = menuManagerScript.SimpleMenuReferences;
+            MenuReferences sideSlideMenuReferences = menuManagerScript.SideSlideMenuReferences;
 
             if (simpleMenuReferences.MenuGameObject == null ||
                 simpleMenuReferences.PlayButtonTransform == null ||
@@ -47,19 +50,17 @@ namespace Menu
                 EditorGUILayout.HelpBox("References missing", MessageType.Warning, true);
             }
 
-            if (string.IsNullOrEmpty(menuManagerScript._playSceneName) ||
-                string.IsNullOrEmpty(menuManagerScript._creditSceneName))
+            if (string.IsNullOrEmpty(menuManagerScript.PlaySceneName) ||
+                string.IsNullOrEmpty(menuManagerScript.CreditSceneName))
             {
                 EditorGUILayout.HelpBox("Scenes names missing", MessageType.Warning, true);
             }
 
             #endregion
-            
-        }
 
+            serializedObject.ApplyModifiedProperties();
+        }
     }
 
 #endif
 }
-
-

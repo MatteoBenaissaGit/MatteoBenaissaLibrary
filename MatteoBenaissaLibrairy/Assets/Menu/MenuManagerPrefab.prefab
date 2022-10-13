@@ -1362,18 +1362,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59393f7a4f39f18408e279a105271815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _simpleMenuReferences:
+  SimpleMenuReferences:
     MenuGameObject: {fileID: 3242611111531735655}
     PlayButtonTransform: {fileID: 3242611111174891273}
     CreditsButtonTransform: {fileID: 3242611111053904309}
     QuitButtonTransform: {fileID: 3242611110807543304}
-  _sideSlideMenuReferences:
+  SideSlideMenuReferences:
     MenuGameObject: {fileID: 3242611112120363874}
     PlayButtonTransform: {fileID: 3242611112102529159}
     CreditsButtonTransform: {fileID: 3242611112667046536}
     QuitButtonTransform: {fileID: 3242611111211431449}
-  _playSceneName: 
-  _creditSceneName: 
+  PlaySceneName: 
+  CreditSceneName: 
   _makeButtonAnimation: 1
   _launchSceneAtAnimationHalf: 0
   _buttonAnimationTimeInSeconds: 1

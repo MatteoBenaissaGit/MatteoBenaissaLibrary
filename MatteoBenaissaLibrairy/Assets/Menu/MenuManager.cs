@@ -1,14 +1,13 @@
-using System;
-using System.Collections;
-using UnityEditor;
-
 namespace Menu
 {
     
+    using System;
+    using System.Collections;
     using UnityEngine;
     using UnityEngine.SceneManagement;
     using DG.Tweening;
 
+    [Serializable]
     public enum MenuType
     {
         Simple = 0,
@@ -38,6 +37,7 @@ namespace Menu
         public Transform QuitButtonTransform;
     }
     
+    [Serializable]
     public class MenuManager : MonoBehaviour
     {
         #region References & Parameters
@@ -47,19 +47,19 @@ namespace Menu
         [Header("Menus references")]
         
         [SerializeField, Tooltip("Reference the simple menu's references")]
-        public MenuReferences _simpleMenuReferences;
+        public MenuReferences SimpleMenuReferences;
 
         [SerializeField, Tooltip("Reference the side-slide menu's references")]
-        public MenuReferences _sideSlideMenuReferences;
+        public MenuReferences SideSlideMenuReferences;
 
         
         [Space(10), Header("Scenes names")]
         
         [SerializeField, Tooltip("name of the play scene")]
-        public string _playSceneName = string.Empty;
+        public string PlaySceneName = string.Empty;
         
         [SerializeField, Tooltip("name of the credit scene")]
-        public string _creditSceneName = string.Empty;
+        public string CreditSceneName = string.Empty;
 
         
         [Space(10), Header("Parameters")]
@@ -74,8 +74,9 @@ namespace Menu
         private float _buttonAnimationTimeInSeconds;
         
         [Space(10), Header("Menu Type")]
-        [SerializeField, Tooltip("The current menu type, debug only !")]
-        private MenuType _currentMenuType = MenuType.Simple;
+
+        [SerializeField, ReadOnly, Tooltip("The current menu type, debug only !")]
+        private MenuType _currentMenuType;
 
         //private
 
@@ -96,8 +97,8 @@ namespace Menu
 
         private void SetMenuType(MenuType menuType)
         {
-            _simpleMenuReferences.MenuGameObject.SetActive(menuType == MenuType.Simple);
-            _sideSlideMenuReferences.MenuGameObject.SetActive(menuType == MenuType.SideSlide);
+            SimpleMenuReferences.MenuGameObject.SetActive(menuType == MenuType.Simple);
+            SideSlideMenuReferences.MenuGameObject.SetActive(menuType == MenuType.SideSlide);
 
             _currentMenuType = menuType;
         }
@@ -123,20 +124,20 @@ namespace Menu
                 {
                     case MenuType.Simple:
                         SimpleButtonClickAnimation(isPlayButton ?
-                            _simpleMenuReferences.PlayButtonTransform :
-                            _simpleMenuReferences.CreditsButtonTransform);
+                            SimpleMenuReferences.PlayButtonTransform :
+                            SimpleMenuReferences.CreditsButtonTransform);
                         break;
                 
                     case MenuType.SideSlide:
                         SlideButtonClickAnimation(isPlayButton ?
-                            _sideSlideMenuReferences.PlayButtonTransform :
-                            _sideSlideMenuReferences.CreditsButtonTransform);
+                            SideSlideMenuReferences.PlayButtonTransform :
+                            SideSlideMenuReferences.CreditsButtonTransform);
                         break;
                 }
             }
 
             //change scene
-            StartCoroutine(GoToScene(isPlayButton ? _playSceneName : _creditSceneName));
+            StartCoroutine(GoToScene(isPlayButton ? PlaySceneName : CreditSceneName));
         }
 
         private void SimpleButtonClickAnimation(Transform buttonTransform)
