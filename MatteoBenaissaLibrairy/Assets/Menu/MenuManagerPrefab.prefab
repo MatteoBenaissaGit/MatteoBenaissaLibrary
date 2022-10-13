@@ -1445,7 +1445,7 @@ MonoBehaviour:
   _makeButtonAnimation: 1
   _launchSceneAtAnimationHalf: 0
   _buttonAnimationTimeInSeconds: 1
-  _currentMenuType: 1
+  _currentMenuType: 0
 --- !u!1 &3242611112092138529
 GameObject:
   m_ObjectHideFlags: 0

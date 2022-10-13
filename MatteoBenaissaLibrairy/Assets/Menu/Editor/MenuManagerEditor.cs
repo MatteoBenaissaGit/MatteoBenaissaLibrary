@@ -18,7 +18,7 @@ namespace Menu.Editor
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
-
+            
             DrawDefaultInspector();
 
             //buttons
@@ -32,6 +32,8 @@ namespace Menu.Editor
                 menuManagerScript.SetMenuTypeSideSlide();
             }
 
+            EditorUtility.SetDirty(menuManagerScript);
+            
             #region Warnings
 
             //references check
