@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Menu
 {
     
@@ -28,13 +30,13 @@ namespace Menu
         public GameObject MenuGameObject;
         
         [Tooltip("Reference menu play button transform")]
-        public Transform PlayButtonTransform;
+        public ButtonManager PlayButton;
         
         [Tooltip("Reference menu credits button transform")]
-        public Transform CreditsButtonTransform;
+        public ButtonManager CreditsButton;
         
         [Tooltip("Reference menu quit button transform")]
-        public Transform QuitButtonTransform;
+        public ButtonManager QuitButton;
     }
     
     [Serializable]
@@ -81,8 +83,19 @@ namespace Menu
         //private
 
         private bool _buttonClicked;
+        private List<ButtonManager> _buttonManagerList = new List<ButtonManager>();
 
         #endregion
+
+        private void Start()
+        {
+            _buttonManagerList.Add(SimpleMenuReferences.PlayButton);
+            _buttonManagerList.Add(SimpleMenuReferences.CreditsButton);
+            _buttonManagerList.Add(SimpleMenuReferences.QuitButton);
+            _buttonManagerList.Add(SideSlideMenuReferences.PlayButton);
+            _buttonManagerList.Add(SideSlideMenuReferences.CreditsButton);
+            _buttonManagerList.Add(SideSlideMenuReferences.QuitButton);
+        }
 
         #region Methods
 
@@ -107,7 +120,10 @@ namespace Menu
         {
             //guard
             if (_buttonClicked) return;
+            
+            //block other animations
             _buttonClicked = true;
+            _buttonManagerList.ForEach(x => x.CanAnimate = false);
             
             //quit
             if (buttonType == (int)ButtonType.Quit)
@@ -124,14 +140,14 @@ namespace Menu
                 {
                     case MenuType.Simple:
                         SimpleButtonClickAnimation(isPlayButton ?
-                            SimpleMenuReferences.PlayButtonTransform :
-                            SimpleMenuReferences.CreditsButtonTransform);
+                            SimpleMenuReferences.PlayButton.transform :
+                            SimpleMenuReferences.CreditsButton.transform);
                         break;
                 
                     case MenuType.SideSlide:
                         SlideButtonClickAnimation(isPlayButton ?
-                            SideSlideMenuReferences.PlayButtonTransform :
-                            SideSlideMenuReferences.CreditsButtonTransform);
+                            SideSlideMenuReferences.PlayButton.transform :
+                            SideSlideMenuReferences.CreditsButton.transform);
                         break;
                 }
             }

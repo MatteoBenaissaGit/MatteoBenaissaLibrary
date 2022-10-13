@@ -79,6 +79,7 @@ GameObject:
   - component: {fileID: 3242611110807543307}
   - component: {fileID: 3242611110807543306}
   - component: {fileID: 3242611110807543305}
+  - component: {fileID: 4627630407178109625}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -201,6 +202,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4627630407178109625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3242611110807543319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73004bcff80b91d4c8c6e0d23b51beeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationRange: 0.25
+  animationTime: 0.5
+  _menuType: 0
+  CanAnimate: 1
 --- !u!1 &3242611111053904308
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,6 +230,7 @@ GameObject:
   - component: {fileID: 3242611111053904296}
   - component: {fileID: 3242611111053904311}
   - component: {fileID: 3242611111053904310}
+  - component: {fileID: 7325610115126520791}
   m_Layer: 5
   m_Name: CreditsButton
   m_TagString: Untagged
@@ -335,6 +353,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7325610115126520791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3242611111053904308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73004bcff80b91d4c8c6e0d23b51beeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationRange: 0.25
+  animationTime: 0.5
+  _menuType: 0
+  CanAnimate: 1
 --- !u!1 &3242611111174891272
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,6 +381,7 @@ GameObject:
   - component: {fileID: 3242611111174891276}
   - component: {fileID: 3242611111174891275}
   - component: {fileID: 3242611111174891274}
+  - component: {fileID: 13619104940192017}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -469,6 +504,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &13619104940192017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3242611111174891272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73004bcff80b91d4c8c6e0d23b51beeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationRange: 0.25
+  animationTime: 0.5
+  _menuType: 0
+  CanAnimate: 1
 --- !u!1 &3242611111211431448
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,6 +532,7 @@ GameObject:
   - component: {fileID: 3242611111211431452}
   - component: {fileID: 3242611111211431451}
   - component: {fileID: 3242611111211431450}
+  - component: {fileID: 436143336}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -603,6 +655,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &436143336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3242611111211431448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73004bcff80b91d4c8c6e0d23b51beeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationRange: 0.25
+  animationTime: 0.5
+  _menuType: 1
+  CanAnimate: 1
 --- !u!1 &3242611111299160605
 GameObject:
   m_ObjectHideFlags: 0
@@ -1158,7 +1226,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3242611111531735960
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1364,14 +1432,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SimpleMenuReferences:
     MenuGameObject: {fileID: 3242611111531735655}
-    PlayButtonTransform: {fileID: 3242611111174891273}
-    CreditsButtonTransform: {fileID: 3242611111053904309}
-    QuitButtonTransform: {fileID: 3242611110807543304}
+    PlayButton: {fileID: 13619104940192017}
+    CreditsButton: {fileID: 7325610115126520791}
+    QuitButton: {fileID: 4627630407178109625}
   SideSlideMenuReferences:
     MenuGameObject: {fileID: 3242611112120363874}
-    PlayButtonTransform: {fileID: 3242611112102529159}
-    CreditsButtonTransform: {fileID: 3242611112667046536}
-    QuitButtonTransform: {fileID: 3242611111211431449}
+    PlayButton: {fileID: 1693248958}
+    CreditsButton: {fileID: 700350191}
+    QuitButton: {fileID: 436143336}
   PlaySceneName: 
   CreditSceneName: 
   _makeButtonAnimation: 1
@@ -1493,6 +1561,7 @@ GameObject:
   - component: {fileID: 3242611112102529210}
   - component: {fileID: 3242611112102529209}
   - component: {fileID: 3242611112102529208}
+  - component: {fileID: 1693248958}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -1615,6 +1684,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1693248958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3242611112102529158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73004bcff80b91d4c8c6e0d23b51beeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationRange: 0.25
+  animationTime: 0.5
+  _menuType: 1
+  CanAnimate: 1
 --- !u!1 &3242611112120363874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1630,7 +1715,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3242611112120363875
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1801,6 +1886,7 @@ GameObject:
   - component: {fileID: 3242611112667046539}
   - component: {fileID: 3242611112667046538}
   - component: {fileID: 3242611112667046537}
+  - component: {fileID: 700350191}
   m_Layer: 5
   m_Name: CreditsButton
   m_TagString: Untagged
@@ -1923,3 +2009,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &700350191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3242611112667046551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73004bcff80b91d4c8c6e0d23b51beeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationRange: 0.25
+  animationTime: 0.5
+  _menuType: 1
+  CanAnimate: 1

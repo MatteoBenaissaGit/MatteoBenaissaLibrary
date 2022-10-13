@@ -39,13 +39,13 @@ namespace Menu.Editor
             MenuReferences sideSlideMenuReferences = menuManagerScript.SideSlideMenuReferences;
 
             if (simpleMenuReferences.MenuGameObject == null ||
-                simpleMenuReferences.PlayButtonTransform == null ||
-                simpleMenuReferences.CreditsButtonTransform == null ||
-                simpleMenuReferences.QuitButtonTransform == null ||
+                simpleMenuReferences.PlayButton == null ||
+                simpleMenuReferences.CreditsButton == null ||
+                simpleMenuReferences.QuitButton == null ||
                 sideSlideMenuReferences.MenuGameObject == null ||
-                sideSlideMenuReferences.PlayButtonTransform == null ||
-                sideSlideMenuReferences.CreditsButtonTransform == null ||
-                sideSlideMenuReferences.QuitButtonTransform == null)
+                sideSlideMenuReferences.PlayButton == null ||
+                sideSlideMenuReferences.CreditsButton == null ||
+                sideSlideMenuReferences.QuitButton == null)
             {
                 EditorGUILayout.HelpBox("References missing", MessageType.Warning, true);
             }
