@@ -64,7 +64,7 @@ public class SpriteView : MonoBehaviour
         Animate();
     }
 
-    #region Methods
+    #region Animation methods
 
     private void Animate()
     {
@@ -99,7 +99,7 @@ public class SpriteView : MonoBehaviour
 
     #endregion
 
-    #region Play State/Action public functions
+    #region Play State/Action public methods
 
     public void PlayState(string state)
     {

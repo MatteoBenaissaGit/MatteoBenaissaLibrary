@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3e7f473c6e653246af840c502a6afe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultStateName: Walk
+  _defaultStateName: Idle
   _statesList:
   - Name: Idle
     TimeBetweenFrames: 0.1
