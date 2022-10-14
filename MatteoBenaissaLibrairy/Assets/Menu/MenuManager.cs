@@ -69,8 +69,8 @@ namespace Menu
         [SerializeField, Tooltip("If true, button will complete their animation")]
         private bool _makeButtonAnimation;
         
-        [SerializeField, Tooltip("If true, launch scene when the animation is half completed")]
-        private bool _launchSceneAtAnimationHalf;
+        [SerializeField, Tooltip("Chose the seconds to wait before launching the scene")]
+        private float _launchSceneTimeInSeconds;
         
         [SerializeField, Range(0,3), Tooltip("The time it takes for the button animation to end")]
         private float _buttonAnimationTimeInSeconds;
@@ -172,11 +172,7 @@ namespace Menu
 
         private IEnumerator GoToScene(string sceneName)
         {
-            float waitTime = _makeButtonAnimation
-                ? _launchSceneAtAnimationHalf ? _buttonAnimationTimeInSeconds / 2 : _buttonAnimationTimeInSeconds
-                : 0;
-            
-            yield return new WaitForSeconds(waitTime);
+            yield return new WaitForSeconds(_launchSceneTimeInSeconds);
             
             if (string.IsNullOrEmpty(sceneName) == false)
             {
