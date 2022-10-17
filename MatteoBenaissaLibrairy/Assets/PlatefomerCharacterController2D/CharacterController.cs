@@ -127,10 +127,10 @@ namespace PlateformCharacterController2D
 
         private void CalculateRayRanged()
         {
-            var center = transform.position +
+            Vector3 center = transform.position +
                          new Vector3(_collisionBox.CollisionBoxOffsetX, _collisionBox.CollisionBoxOffsetY, 0);
-            var size = new Vector3(_collisionBox.CollisionBoxWidth, _collisionBox.CollisionBoxHeight, 1);
-            var bounds = new Bounds(center, size);
+            Vector3 size = new Vector3(_collisionBox.CollisionBoxWidth, _collisionBox.CollisionBoxHeight, 1);
+            Bounds bounds = new Bounds(center, size);
 
             _rayRangeDown = new RayRange(bounds.min.x + _rayBuffer, bounds.min.y, bounds.max.x - _rayBuffer,
                 bounds.min.y,
@@ -148,9 +148,9 @@ namespace PlateformCharacterController2D
 
         private IEnumerable<Vector2> EvaluateRayRangePositions(RayRange range)
         {
-            for (var i = 0; i < _collisionDetectorCount; i++)
+            for (int i = 0; i < _collisionDetectorCount; i++)
             {
-                var slerpInterpolate = (float)i / (_collisionDetectorCount - 1);
+                float slerpInterpolate = (float)i / (_collisionDetectorCount - 1);
                 yield return Vector2.Lerp(range.Start, range.End, slerpInterpolate);
             }
         }
@@ -168,7 +168,7 @@ namespace PlateformCharacterController2D
                 _currentHorizontalSpeed = Mathf.Clamp(_currentHorizontalSpeed, -_walk.MaximumSpeed, _walk.MaximumSpeed);
 
                 // Apply bonus at the apex of a jump
-                var apexBonus = Mathf.Sign(_inputs.X) * _walk.ApexBonus * _apexPoint;
+                float apexBonus = Mathf.Sign(_inputs.X) * _walk.ApexBonus * _apexPoint;
                 _currentHorizontalSpeed += apexBonus * Time.deltaTime;
             }
             // Slow the character down if no input
@@ -248,18 +248,18 @@ namespace PlateformCharacterController2D
         private void MoveCharacter()
         {
             //collider box variables
-            var colliderBoxCenterPosition = transform.position +
+            Vector3 colliderBoxCenterPosition = transform.position +
                                             new Vector3(_collisionBox.CollisionBoxOffsetX,
                                                 _collisionBox.CollisionBoxOffsetY, 0);
-            var colliderBoxSize = new Vector3(_collisionBox.CollisionBoxWidth, _collisionBox.CollisionBoxHeight, 0);
+            Vector3 colliderBoxSize = new Vector3(_collisionBox.CollisionBoxWidth, _collisionBox.CollisionBoxHeight, 0);
 
             //movement variables
             _rawMovement = new Vector3(_currentHorizontalSpeed, _currentVerticalSpeed); //movement
-            var move = _rawMovement * Time.deltaTime; //movement adjusted with deltaTime
-            var furthestPoint = colliderBoxCenterPosition + move; //next position
+            Vector3 move = _rawMovement * Time.deltaTime; //movement adjusted with deltaTime
+            Vector3 furthestPoint = colliderBoxCenterPosition + move; //next position
 
             // check next position. If nothing hit, move and don't do extra checks
-            var hit = Physics2D.OverlapBox(furthestPoint, colliderBoxSize, 0, _groundLayerToDetect);
+            Collider2D hit = Physics2D.OverlapBox(furthestPoint, colliderBoxSize, 0, _groundLayerToDetect);
             if (!hit)
             {
                 transform.position += move;
@@ -267,12 +267,12 @@ namespace PlateformCharacterController2D
             }
 
             // otherwise increment away from current pos; see what closest position we can move to
-            var positionToMoveTo = transform.position;
-            for (var i = 1; i < _freeColliderIterations; i++)
+            Vector3 positionToMoveTo = transform.position;
+            for (int i = 1; i < _freeColliderIterations; i++)
             {
                 // increment to check all but furthestPoint - we did that already
-                var lerpInterpolate = (float)i / _freeColliderIterations;
-                var positionToTry = Vector2.Lerp(colliderBoxCenterPosition, furthestPoint, lerpInterpolate);
+                float lerpInterpolate = (float)i / _freeColliderIterations;
+                Vector2 positionToTry = Vector2.Lerp(colliderBoxCenterPosition, furthestPoint, lerpInterpolate);
 
                 if (Physics2D.OverlapBox(positionToTry, colliderBoxSize, 0, _groundLayerToDetect))
                 {
@@ -281,7 +281,7 @@ namespace PlateformCharacterController2D
                     //If landed on a corner or hit our head on a ledge, move the player
                     if (i != 1) return;
                     if (_currentVerticalSpeed < 0) _currentVerticalSpeed = 0;
-                    var direction = transform.position - hit.transform.position;
+                    Vector3 direction = transform.position - hit.transform.position;
                     transform.position += direction.normalized * move.magnitude;
 
                     return;
@@ -349,5 +349,3 @@ namespace PlateformCharacterController2D
         #endregion
     }
 }
-
-//TODO move all vars
