@@ -21,6 +21,9 @@ namespace SceneTransition
         [Tooltip("Reference the size image")]
         public Animator SizeImageAnimator;
 
+        [Tooltip("Reference the slide image")]
+        public Animator SlideImageAnimator;
+        
         #endregion
 
         #region Methods
@@ -32,17 +35,14 @@ namespace SceneTransition
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.LeftArrow)) LaunchTransitionIn(TransitionType.Fade);
-            if (Input.GetKeyDown(KeyCode.RightArrow)) LaunchTransitionOut(TransitionType.Fade);
-            
-            if (Input.GetKeyDown(KeyCode.UpArrow)) LaunchTransitionIn(TransitionType.Size);
-            if (Input.GetKeyDown(KeyCode.DownArrow)) LaunchTransitionOut(TransitionType.Size);
+           
         }
 
         private void SetupActiveTransition(TransitionType transitionType)
         {
             FadeImageAnimator.gameObject.SetActive(transitionType == TransitionType.Fade);
             SizeImageAnimator.gameObject.SetActive(transitionType == TransitionType.Size);
+            SlideImageAnimator.gameObject.SetActive(transitionType == TransitionType.Slide);
         }
 
         public void LaunchTransitionIn(TransitionType transitionType)
@@ -70,6 +70,9 @@ namespace SceneTransition
                     break;
                 case TransitionType.Size:
                     SizeImageAnimator.SetTrigger(triggerName);
+                    break;
+                case TransitionType.Slide:
+                    SlideImageAnimator.SetTrigger(triggerName);
                     break;
             }
         }

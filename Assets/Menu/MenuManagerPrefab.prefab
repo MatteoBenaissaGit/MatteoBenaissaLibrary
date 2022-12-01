@@ -218,6 +218,12 @@ MonoBehaviour:
   animationTime: 0.5
   _menuType: 0
   CanAnimate: 1
+  OnButtonHover:
+    m_PersistentCalls:
+      m_Calls: []
+  OnButtonExitHover:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3242611111053904308
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,6 +375,12 @@ MonoBehaviour:
   animationTime: 0.5
   _menuType: 0
   CanAnimate: 1
+  OnButtonHover:
+    m_PersistentCalls:
+      m_Calls: []
+  OnButtonExitHover:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3242611111174891272
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,6 +532,12 @@ MonoBehaviour:
   animationTime: 0.5
   _menuType: 0
   CanAnimate: 1
+  OnButtonHover:
+    m_PersistentCalls:
+      m_Calls: []
+  OnButtonExitHover:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3242611111211431448
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,6 +689,12 @@ MonoBehaviour:
   animationTime: 0.5
   _menuType: 1
   CanAnimate: 1
+  OnButtonHover:
+    m_PersistentCalls:
+      m_Calls: []
+  OnButtonExitHover:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3242611111299160605
 GameObject:
   m_ObjectHideFlags: 0
@@ -1443,9 +1467,12 @@ MonoBehaviour:
   PlaySceneName: 
   CreditSceneName: 
   _makeButtonAnimation: 1
-  _launchSceneAtAnimationHalf: 0
+  _launchSceneTimeInSeconds: 0
   _buttonAnimationTimeInSeconds: 1
   _currentMenuType: 0
+  OnAnyButtonClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3242611112092138529
 GameObject:
   m_ObjectHideFlags: 0
@@ -1700,6 +1727,12 @@ MonoBehaviour:
   animationTime: 0.5
   _menuType: 1
   CanAnimate: 1
+  OnButtonHover:
+    m_PersistentCalls:
+      m_Calls: []
+  OnButtonExitHover:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3242611112120363874
 GameObject:
   m_ObjectHideFlags: 0
@@ -2025,3 +2058,9 @@ MonoBehaviour:
   animationTime: 0.5
   _menuType: 1
   CanAnimate: 1
+  OnButtonHover:
+    m_PersistentCalls:
+      m_Calls: []
+  OnButtonExitHover:
+    m_PersistentCalls:
+      m_Calls: []

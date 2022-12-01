@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace Menu
 {
     
@@ -8,6 +6,8 @@ namespace Menu
     using UnityEngine;
     using UnityEngine.SceneManagement;
     using DG.Tweening;
+    using System.Collections.Generic;
+    using UnityEngine.Events;
 
     [Serializable]
     public enum MenuType
@@ -87,6 +87,13 @@ namespace Menu
 
         #endregion
 
+        #region Events
+
+        [Header("Events")]
+        public UnityEvent OnAnyButtonClick = new UnityEvent();
+
+        #endregion
+
         private void Start()
         {
             _buttonManagerList.Add(SimpleMenuReferences.PlayButton);
@@ -151,6 +158,9 @@ namespace Menu
                         break;
                 }
             }
+            
+            //event
+            OnAnyButtonClick.Invoke();
 
             //change scene
             StartCoroutine(GoToScene(isPlayButton ? PlaySceneName : CreditSceneName));

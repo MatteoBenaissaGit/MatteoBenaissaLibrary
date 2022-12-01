@@ -6,7 +6,8 @@ namespace SceneTransition
     public enum TransitionType
     {
         Fade = 0,
-        Size = 1
+        Size = 1,
+        Slide = 2
     }
 }
 

@@ -1,14 +1,10 @@
-
-
-using System;
-using DG.Tweening;
-using Unity.VisualScripting;
-
 namespace Menu
 {
     using UnityEngine;
     using UnityEngine.EventSystems;
-
+    using DG.Tweening;
+    using UnityEngine.Events;
+    
     public class ButtonManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         [Header("Parameters")]
@@ -24,6 +20,11 @@ namespace Menu
 
         [ReadOnly] 
         public bool CanAnimate = true;
+        
+        [Header("Events")]
+        
+        public UnityEvent OnButtonHover = new UnityEvent();
+        public UnityEvent OnButtonExitHover = new UnityEvent();
         
         //privates
         
@@ -50,6 +51,8 @@ namespace Menu
                     transform.DOMoveX(startX + animationRange, animationTime);
                     break;
             }
+            
+            OnButtonHover.Invoke();
         }
 
         public void OnPointerExit(PointerEventData eventData)
@@ -66,6 +69,8 @@ namespace Menu
                     transform.DOMoveX(startX, animationTime);
                     break;
             }
+            
+            OnButtonExitHover.Invoke();
         }
         
         
