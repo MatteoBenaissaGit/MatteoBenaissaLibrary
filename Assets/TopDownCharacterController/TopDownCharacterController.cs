@@ -32,9 +32,13 @@ namespace DefaultNamespace
             _spriteView.OnActionEnd.RemoveListener(EndAction);
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             HandleMovementInputs();
+        }
+
+        private void FixedUpdate()
+        {
             ApplyAnimation();
             ApplyMovement();
         }
