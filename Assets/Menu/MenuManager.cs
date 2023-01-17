@@ -136,6 +136,7 @@ namespace Menu
             if (buttonType == (int)ButtonType.Quit)
             {
                 Application.Quit();
+                return;
             }
 
             bool isPlayButton = buttonType == (int)ButtonType.Play;
