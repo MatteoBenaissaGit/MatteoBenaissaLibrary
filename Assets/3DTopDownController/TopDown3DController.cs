@@ -25,7 +25,7 @@ public class TopDown3DController : MonoBehaviour
     [SerializeField] private List<LayerMask> _layersToIgnore;
     
     //animation
-    [Header("Animation"), SerializeField, Range(0,1)] private float _facingDirectionSpeed = 0.5f;
+    [Header("Animation"), SerializeField, Range(0,1)] private float _facingDirectionSpeed = 0.1f;
 
     #endregion
 
@@ -64,9 +64,6 @@ public class TopDown3DController : MonoBehaviour
 
     private void HandleMovement()
     {
-        //animation
-        HandleAnimation();
-        
         if (CanMove() == false)
         {
             BlockCharacterMovement();
@@ -114,35 +111,15 @@ public class TopDown3DController : MonoBehaviour
         rigidbodyVelocity = new Vector3(currentVelocityX, _rigidbody.velocity.y, currentVelocityY);
         _rigidbody.velocity = rigidbodyVelocity;
         
-        
+        //animation
+        HandleAnimation();
     }
 
     private bool CanMove()
     {
-        return IsVoidInFront(MovementInputs()) == false;
-    }
-
-    private bool IsVoidInFront(Vector2 direction)
-    {
-        Vector3 origin = transform.position + new Vector3(direction.x, 0, direction.y).normalized;
-        RaycastHit hit;
-        Physics.Raycast(origin, Vector3.down, out hit, Mathf.Infinity, _floorLayer);
-
-        if (hit.collider == null)
-        {
-            print("hit = null");
-            return true;
-        }
-
-        if (hit.collider.gameObject.layer == _floorLayer ||
-            _layersToIgnore.Contains(hit.collider.gameObject.layer))
-        {
-            return false;
-        }
-        
         return true;
     }
-
+    
     private void BlockCharacterMovement()
     {
         _rigidbody.velocity = Vector3.zero;
@@ -167,7 +144,7 @@ public class TopDown3DController : MonoBehaviour
         
         // rotate to face input direction
         float rotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f); 
+        transform.rotation = QuaternionRotation(rotation);
     }
     
     private Quaternion QuaternionRotation(float targetRotation)
@@ -185,7 +162,7 @@ public class TopDown3DController : MonoBehaviour
     {
         Ray r = new Ray()
         {
-            origin = transform.position + new Vector3(MovementInputs().x, 0, MovementInputs().y).normalized - Vector3.up,
+            origin = transform.position + new Vector3(MovementInputs().x, 0, MovementInputs().y).normalized,
             direction = Vector3.down
         };
         Gizmos.color = Color.red;

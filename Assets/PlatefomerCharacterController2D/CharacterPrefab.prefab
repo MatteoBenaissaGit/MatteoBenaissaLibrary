@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 763109098}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -83,7 +83,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.4779873
+        value: 0.31548882
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -215,12 +215,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.8396226, g: 0.5425863, b: 0.5425863, a: 1}
+  m_Sprite: {fileID: -196569111, guid: 6390d0fed37b0b541a98018642a4e863, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.8125, y: 1.125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -249,9 +249,9 @@ MonoBehaviour:
     JumpBuffer: 0.5
   _collisionBox:
     CollisionBoxWidth: 0.52
-    CollisionBoxHeight: 1.04
+    CollisionBoxHeight: 0.7
     CollisionBoxOffsetX: 0
-    CollisionBoxOffsetY: 0
+    CollisionBoxOffsetY: 0.32
   _gravity:
     _fallClamp: -20
     _minFallSpeed: 45
