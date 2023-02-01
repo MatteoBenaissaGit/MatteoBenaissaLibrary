@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public class DialogCreator : MonoBehaviour
 {
     #region Enums
-    
+
     [Serializable]
     private enum LaunchType
     {
@@ -23,18 +23,19 @@ public class DialogCreator : MonoBehaviour
         Holding = 2,
         WaitingForInput = 3,
     }
-    
+
     #endregion
 
     [SerializeField] private LaunchType _launchType;
     [SerializeField] private List<DialogStruct> _dialog;
     [SerializeField] private bool _canBeReplayed;
     [SerializeField, ReadOnly] private bool _hasEnded;
+    [SerializeField] private bool _blockPlayerMovement, _blockCameraMovement;
 
-    [Space(20), Header("Events")]
+    [Space(20), Header("Events")] 
     public UnityEvent OnDialogLaunch = new UnityEvent();
     public UnityEvent OnDialogEnd = new UnityEvent();
-
+    
     private int _dialogIndex;
     private float _currentDialogCooldown;
     private DialogState _currentDialogState = DialogState.NotLaunched;
@@ -50,16 +51,14 @@ public class DialogCreator : MonoBehaviour
         {
             return;
         }
-        
+
         CoolDownManagement();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Transform collider = other.GetComponent<Transform>(); //change this to whatever script you want to detect
-        if (_launchType == LaunchType.TriggerZone && collider != null)
+        if (_launchType == LaunchType.TriggerZone)
         {
-            print(collider.gameObject.name);
             if ((_hasEnded && _canBeReplayed) || (_hasEnded == false && _currentDialogState == DialogState.NotLaunched))
             {
                 LaunchDialog();
@@ -75,7 +74,7 @@ public class DialogCreator : MonoBehaviour
         {
             return;
         }
-        
+
         switch (_currentDialogState)
         {
             case DialogState.Showing:
@@ -94,13 +93,14 @@ public class DialogCreator : MonoBehaviour
                     _currentDialogState = DialogState.WaitingForInput;
                     DialogManager.Instance.PressButtonImage.DOFade(1, 0.2f);
                 }
+
                 break;
             case DialogState.WaitingForInput:
                 if (Input.anyKeyDown)
                 {
                     _dialogIndex++;
                     CheckForDialogEnd();
-                    
+
                     if (_dialogIndex < _dialog.Count - 1)
                     {
                         ShowDialog(_dialogIndex);
@@ -114,7 +114,7 @@ public class DialogCreator : MonoBehaviour
     {
         DialogManager.Instance.ToggleDialog(true);
         OnDialogLaunch.Invoke();
-        
+
         _dialogIndex = 0;
         ShowDialog(_dialogIndex);
 
@@ -131,7 +131,21 @@ public class DialogCreator : MonoBehaviour
         _currentDialogState = DialogState.Showing;
         _currentDialogCooldown = _dialog[index].TextShowTime;
 
-        DialogManager.Instance.TextMeshPro.text = _dialog[index].Text;
+        if (_dialog[index].ShowLetterByLetter)
+        {
+            DialogManager.Instance.TypeWriterText.FullText = _dialog[index].Text;
+            DialogManager.Instance.TypeWriterText.DisplayText.color = _dialog[index].TextColor;
+            DialogManager.Instance.TypeWriterText.Delay =  _dialog[index].TextShowTime / _dialog[index].Text.Length;
+            StartCoroutine(DialogManager.Instance.TypeWriterText.ShowText());
+        }
+        else
+        {
+            DialogManager.Instance.TypeWriterText.DisplayText.text = _dialog[index].Text;
+        }
+
+        //visual
+        DialogManager.Instance.TypeWriterText.transform.DOPunchScale(Vector3.one * _dialog[index].SizeEffect, 0.3f, 10, 0);
+        DialogManager.Instance.PressButtonImage.DOFade(0, 0.1f);
         
         //audio
         SoundManager.Instance.PlayDialog(_dialog[index].Clip);
@@ -142,7 +156,7 @@ public class DialogCreator : MonoBehaviour
         OnDialogEnd.Invoke();
         _hasEnded = true;
         _currentDialogState = DialogState.NotLaunched;
-        
+
         //visual
         GameObject dialog = DialogManager.Instance.DialogUIGameObject;
         dialog.transform.DOScale(Vector3.zero, 0.25f).OnComplete(DeactivateDialogObject);
@@ -150,7 +164,7 @@ public class DialogCreator : MonoBehaviour
 
     private void CheckForDialogEnd()
     {
-        if (_dialogIndex >= _dialog.Count-1)
+        if (_dialogIndex >= _dialog.Count - 1)
         {
             EndDialog();
         }

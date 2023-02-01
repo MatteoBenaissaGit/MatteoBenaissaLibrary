@@ -208,16 +208,28 @@ MonoBehaviour:
   _dialog:
   - Text: Test1
     TextShowTime: 1
+    ShowLetterByLetter: 1
     TextHoldTime: 1
+    TextColor:
+      serializedVersion: 2
+      rgba: 4294967295
+    SizeEffect: 0
     SequencingTypeNext: 0
     Clip: {fileID: 0}
   - Text: Test2
     TextShowTime: 1
+    ShowLetterByLetter: 0
     TextHoldTime: 1
+    TextColor:
+      serializedVersion: 2
+      rgba: 4294967295
+    SizeEffect: 1
     SequencingTypeNext: 1
     Clip: {fileID: 0}
   _canBeReplayed: 0
   _hasEnded: 0
+  _blockPlayerMovement: 0
+  _blockCameraMovement: 0
   OnDialogLaunch:
     m_PersistentCalls:
       m_Calls: []
@@ -235,6 +247,7 @@ GameObject:
   - component: {fileID: 417443842283332315}
   - component: {fileID: 417443842283332313}
   - component: {fileID: 417443842283332312}
+  - component: {fileID: 2519683104834879451}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -359,3 +372,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2519683104834879451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417443842283332314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c1f4a7edd46a574aa8ad2c1ec131df2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Delay: 0.1
+  FullText: 
+  DisplayText: {fileID: 417443842283332312}
