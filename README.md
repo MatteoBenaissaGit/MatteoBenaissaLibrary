@@ -7,3 +7,4 @@
 - **ReadOnly** : an attribute allowing people to see something in the inspector without being able to moddify it
 - **SceneTransition** : package for easy transition making (fade, slide & size up/down from center)
 - **SpriteView** : animate a 2d sprite without the animator
+- **Attributes** : contains multiples helpfull attributes
