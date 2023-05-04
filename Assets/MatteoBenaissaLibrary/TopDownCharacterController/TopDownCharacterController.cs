@@ -1,5 +1,5 @@
 ﻿using System;
-using MatteoBenaissaLibrary.ReadOnly;
+using MatteoBenaissaLibrary.Attributes.ReadOnly;
 using UnityEngine;
 
 namespace MatteoBenaissaLibrary.TopDownCharacterController

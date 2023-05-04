@@ -1,5 +1,5 @@
 using DG.Tweening;
-using MatteoBenaissaLibrary.ReadOnly;
+using MatteoBenaissaLibrary.Attributes.ReadOnly;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;

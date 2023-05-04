@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
-using MatteoBenaissaLibrary.ReadOnly;
+using MatteoBenaissaLibrary.Attributes.ReadOnly;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
