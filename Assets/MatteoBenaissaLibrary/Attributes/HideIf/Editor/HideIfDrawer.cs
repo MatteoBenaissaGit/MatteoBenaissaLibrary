@@ -39,7 +39,9 @@ namespace MatteoBenaissaLibrary.Attributes.HideIf.Editor
         {
             if (_hidden == false)
             {
+                EditorGUI.BeginProperty(position, label, property);
                 EditorGUI.PropertyField(position, property, label);
+                EditorGUI.EndProperty();
             }
         }
     }

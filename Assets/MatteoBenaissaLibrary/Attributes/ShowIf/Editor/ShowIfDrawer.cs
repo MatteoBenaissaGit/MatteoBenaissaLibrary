@@ -39,7 +39,9 @@ namespace MatteoBenaissaLibrary.Attributes.ShowIf.Editor
         {
             if (_showed)
             {
+                EditorGUI.BeginProperty(position, label, property);
                 EditorGUI.PropertyField(position, property, label);
+                EditorGUI.EndProperty();
             }
         }
     }

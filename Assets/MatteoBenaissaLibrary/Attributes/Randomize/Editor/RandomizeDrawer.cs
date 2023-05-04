@@ -15,6 +15,7 @@ namespace MatteoBenaissaLibrary.Attributes.Randomize.Editor
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            EditorGUI.BeginProperty(position, label, property);
             if (property.propertyType != SerializedPropertyType.Float)
             {
                 GUI.contentColor = new Color(1f, 0.47f, 0.51f);
@@ -33,6 +34,7 @@ namespace MatteoBenaissaLibrary.Attributes.Randomize.Editor
                 float randomNumber =  Random.Range(randomizeAttribute.MinimumValue, randomizeAttribute.MaximumValue);
                 property.floatValue = (float)Math.Round(randomNumber, 3);
             }
+            EditorGUI.EndProperty();
         }
     }
 }
