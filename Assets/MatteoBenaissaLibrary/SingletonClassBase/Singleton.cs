@@ -32,7 +32,11 @@ namespace MatteoBenaissaLibrary.SingletonClassBase
             }
             
             Application.quitting += ResetInstance;
+            
+            InternalAwake();
         }
+
+        protected abstract void InternalAwake();
 
         protected virtual void OnDestroy()
         {

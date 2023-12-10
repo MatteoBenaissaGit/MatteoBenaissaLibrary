@@ -43,5 +43,10 @@ namespace MatteoBenaissaLibrary.SoundManaging
         {
             _dialogSource.mute = _dialogSource.mute == false;
         }
+
+        protected override void InternalAwake()
+        {
+            
+        }
     }
 }
