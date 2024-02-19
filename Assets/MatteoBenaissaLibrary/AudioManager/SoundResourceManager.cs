@@ -12,6 +12,8 @@ namespace MatteoBenaissaLibrary.AudioManager
     public class SoundResourceManager : Singleton<SoundResourceManager>
     {
         [field:Header("Resources")] [field:SerializeField] public List<AudioClip> Resources { get; private set; } = new List<AudioClip>();
+
+        [SerializeField] private string _soundEnumPath = "Assets/MatteoBenaissaLibrary/AudioManager/";
         
         protected override void InternalAwake()
         {
@@ -22,8 +24,8 @@ namespace MatteoBenaissaLibrary.AudioManager
         private void OnValidate()
         {
             string enumName = "SoundEnum";
+            string filePathAndName = _soundEnumPath + enumName + ".cs";
             string[] enumEntries = Resources.Select(x => x.name).ToArray();
-            string filePathAndName = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + enumName + ".cs";
 
             using (StreamWriter streamWriter = new StreamWriter(filePathAndName))
             {
