@@ -36,7 +36,7 @@ namespace MatteoBenaissaLibrary.SingletonClassBase
             InternalAwake();
         }
 
-        protected abstract void InternalAwake();
+        protected virtual void InternalAwake(){}
 
         protected virtual void OnDestroy()
         {
