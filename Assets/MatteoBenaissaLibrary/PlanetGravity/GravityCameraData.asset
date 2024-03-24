@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8399afc5d1f94cf98bb832aa11c1312d, type: 3}
+  m_Name: GravityCameraData
+  m_EditorClassIdentifier: 
+  <CameraXMovementSpeed>k__BackingField: 60
+  <CameraYMovementSpeed>k__BackingField: 60
+  <CameraYClamp>k__BackingField: {x: -25, y: 30}
+  <BaseCamera>k__BackingField:
+    <ID>k__BackingField: BASE
+    <Priority>k__BackingField: 0
+    <Fov>k__BackingField: 60
+    <SpeedToChange>k__BackingField: 0.5
+    <Offset>k__BackingField: {x: 0, y: 0}
+    <Rotation>k__BackingField: {x: 0, y: 0, z: 0}
+    <RotationSpeedMultiplier>k__BackingField: {x: 1, y: 1}
+  <RunCamera>k__BackingField:
+    <ID>k__BackingField: RUN
+    <Priority>k__BackingField: 0
+    <Fov>k__BackingField: 70
+    <SpeedToChange>k__BackingField: 0.5
+    <Offset>k__BackingField: {x: 0, y: 0}
+    <Rotation>k__BackingField: {x: 0, y: 0, z: 0}
+    <RotationSpeedMultiplier>k__BackingField: {x: 1, y: 1}
+  <JumpCamera>k__BackingField:
+    <ID>k__BackingField: JUMP
+    <Priority>k__BackingField: 0
+    <Fov>k__BackingField: 70
+    <SpeedToChange>k__BackingField: 0.5
+    <Offset>k__BackingField: {x: 0, y: 0}
+    <Rotation>k__BackingField: {x: 0, y: 0, z: 0}
+    <RotationSpeedMultiplier>k__BackingField: {x: 1, y: 1}
+  <FallCamera>k__BackingField:
+    <ID>k__BackingField: FALL
+    <Priority>k__BackingField: 0
+    <Fov>k__BackingField: 70
+    <SpeedToChange>k__BackingField: 0.25
+    <Offset>k__BackingField: {x: 0, y: 0}
+    <Rotation>k__BackingField: {x: 0, y: 0, z: 0}
+    <RotationSpeedMultiplier>k__BackingField: {x: 1, y: 1}

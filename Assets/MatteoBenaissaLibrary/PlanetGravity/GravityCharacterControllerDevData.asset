@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f12b7944bde84f33bfd8c363343197ce, type: 3}
+  m_Name: GravityCharacterControllerDevData
+  m_EditorClassIdentifier: 
+  <JumpTrailLength>k__BackingField: 0.5
+  <WalkSpeed>k__BackingField: 1.5
+  <WalkRotationSpeed>k__BackingField: 10
+  <AccelerationTime>k__BackingField: 0.5
+  <AccelerationCurve>k__BackingField:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.5
+      value: 1.0023575
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  <DirectionChangeSpeedMultiplier>k__BackingField: 0.5
+  <DirectionChangeLerpSpeed>k__BackingField: 0.05
+  <JumpForce>k__BackingField: 20
+  <FallGravityMultiplier>k__BackingField: 2
+  <ForceAddedPerInputAfterJump>k__BackingField: 0.2
+  <MaximumAddedInputAfterJump>k__BackingField: 40
+  <RaycastTowardGroundToDetectFallDistance>k__BackingField: 1.8
+  <JumpAirMovementAmplitude>k__BackingField: 10
+  <FallAirMovementAmplitude>k__BackingField: 5
+  <InAirMovementAmplitude>k__BackingField: 20
+  <DoCoyoteTime>k__BackingField: 1
+  <CoyoteTimeTimeToJumpAfterFall>k__BackingField: 0.15
+  <DoJumpBuffering>k__BackingField: 1
+  <JumpBufferTimeMaxBeforeLand>k__BackingField: 0.2
